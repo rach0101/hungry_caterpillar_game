@@ -86,17 +86,9 @@ function move() {
         intervalTime = intervalTime * speed
         console.log(intervalTime)
         timerId = setInterval(move, intervalTime)
-    }
-    
-    
-    
+    } 
     squares[currentSnake[0]].classList.add('snake')
 }
-
-
-
-
-
 
 function generateApple() {
     do {
