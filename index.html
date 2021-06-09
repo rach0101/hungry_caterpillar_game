@@ -1,12 +1,22 @@
 <html>
     <head>
         <link rel="stylesheet" href="index.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@400;600&family=Montserrat:ital,wght@0,100;0,400;1,100&display=swap" rel="stylesheet">
     </head>
     <body>
-        <h1>Snake Game</h1>
+        <h1>Hungry Caterpillar🦋</h1>
+        <p>Help the hungry caterpillar grow by eating the apple</p>
         <button id="start">Start/Restart</button>
-        <h2>Score <span id="score"></span></h2>
+        <h2>Score: <span id="score"></span></h2>
         <div class="grid"></div>
+        
         <script src="index.js"></script>
+
+        <div id="overlay">
+            <div id="modal">
+                <p>Game Over</p>
+            </div>
+        </div>        
     </body>
 </html>
