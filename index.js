@@ -12,18 +12,19 @@ let speed = .9
 let timerId = 0
 
 function createGrid() {
-    //create 100 of these elements with a for loop
+    //create a 100 square grid with a for loop
     for (let i=0; i < width*width; i++) {
-     //create element
-    const square = document.createElement('div')
-    //add styling to the element
-    square.classList.add('square')
-    //put the element into our grid
-    grid.appendChild(square)
-    //push it into a new squares array    
-    squares.push(square)
+        //create div
+        const square = document.createElement('div')
+        //add styling to the div
+        square.classList.add('square')
+        //put the element into our grid aka add newly created child div to our parent div with a class of grid
+        grid.appendChild(square)
+        //push it into a new squares array    
+        squares.push(square)
     }
 }
+
 createGrid()
 
 currentCaterpillar.forEach(index => squares[index].classList.add('caterpillar'))
@@ -33,15 +34,20 @@ function startGame() {
     currentCaterpillar.forEach(index => squares[index].classList.remove('caterpillar'))
     //remove the apple
     squares[appleIndex].classList.remove('apple')
+    // reset timer
     clearInterval(timerId)
+    // assign location of caterpillar
     currentCaterpillar = [2,1,0]
+    // reset score
     score = 0
-    //re add new score to browser
+    //add score to scoreboard
     scoreDisplay.textContent = score
+    // reset direction to 1
     direction = 1
+    // set interval
     intervalTime = 1000
     generateApple()
-    //readd the class of snake to our new currentSnake
+    //add the class of caterpillar to our new currentCaterpillar
     currentCaterpillar.forEach(index => squares[index].classList.add('caterpillar'))
     timerId = setInterval(move, intervalTime)
 }
@@ -53,32 +59,29 @@ function move() {
         (currentCaterpillar[0] % width === 0 && direction === -1) || //if caterpillar has hit left wall
         (currentCaterpillar[0] - width < 0 && direction === -width) || //if caterpillar has hit top
         squares[currentCaterpillar[0] + direction].classList.contains('caterpillar') //if caterpillar hits itself
-        
-    ){
+     )
+    {   
+        // ends game and displays Game Over Modal if caterpillar hits a wall or itself
         console.log("game over");
         document.getElementById("overlay").style.display = "block";
         return clearInterval(timerId)
     }
     
-
     //remove last element from our currentCaterpillar array
     const tail = currentCaterpillar.pop()
     //remove styling from last element
     squares[tail].classList.remove('caterpillar')
     //add square in direction we are heading
     currentCaterpillar.unshift(currentCaterpillar[0] + direction)
-    //add styling so we can see it
     
-    //deal with caterpillar head gets apple
+    //grow caterpillar when it eats apple
     if (squares[currentCaterpillar[0]].classList.contains('apple')) {
         //remove the class of apple
         squares[currentCaterpillar[0]].classList.remove('apple')
-        //grow our snake by adding class of snake to it
+        //grow our caterpillar by adding class of caterpillar to it
         squares[tail].classList.add('caterpillar')
-        console.log(tail)
-        //grow our snake array
+        //grow our caterpillar array
         currentCaterpillar.push(tail)
-        console.log(currentCaterpillar)
         //generate new apple
         generateApple()
         //add one to the score

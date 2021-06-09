@@ -1,29 +1,21 @@
+/* typeography */
 html, body {
     margin: 10;
     padding: 10;
     font-family: 'Montserrat', sans-serif;
-    max-width: 500px;
-    height: 500px;
 }
 
 h1, p {
     font-weight: 400;
 }
-#overlay {
-    display: none;
-    width: 50%;
-    height: 75%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: black;
-    color: white;
-    font-size: 50px;
-    color: turquoise;
-  }
 
+h2 {
+    font-family: 'Baloo Tammudu 2', cursive;
+    font-weight: 400;
+    font-size: 1.75em;
+}
+
+/* button */
 #start {
     background-color: fuchsia;
     padding: .5em;
@@ -34,7 +26,8 @@ h1, p {
 }
 
 #start:hover,
-#start:focus {
+#start:focus,
+#start:active  {
     background-color:lightpink;
     text-decoration: none;
     border: none;
@@ -42,21 +35,16 @@ h1, p {
 }
 
 #start:active {
-    background-color:lightpink;
     padding: .75em;
-    text-decoration: none;
-    border: none;
 }
 
+/* score */
 h2 {
     background-color: turquoise;
     opacity: 65%;
     width: 190px;
     padding: 5px;
     padding-bottom: 0;
-    font-family: 'Baloo Tammudu 2', cursive;
-    font-weight: 400;
-    font-size: 1.75em;
 }
 
 #score {
@@ -68,6 +56,8 @@ h2 {
     font-family: 'Baloo Tammudu 2', cursive;
     font-weight: 600;
 }
+
+/* game */
 .grid {
     display: flex;
     flex-wrap: wrap;
@@ -91,3 +81,18 @@ h2 {
     font-size: 1.25em;
 }
 
+/* modal */
+#overlay {
+    display: none;
+    width: 50%;
+    height: 75%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: black;
+    color: white;
+    font-size: 50px;
+    color: turquoise;
+}
